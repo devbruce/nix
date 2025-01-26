@@ -14,6 +14,7 @@
     httpie
     pyenv
     poetry
+    virtualenv
     pipx
   ];
 }
