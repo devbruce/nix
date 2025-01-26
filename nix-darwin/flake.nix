@@ -11,7 +11,7 @@
     modules.url = "path:./modules";
   };
 
-  outputs = inputs@{ self, nix-darwin, modules, nix-homebrew, home-manager, ... }:
+  outputs = inputs@{ self, nixpkgs, nix-darwin, modules, nix-homebrew, home-manager, ... }:
   let
     username = "bruce";
   in {
@@ -33,9 +33,11 @@
         home-manager.darwinModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "backup";
           home-manager.extraSpecialArgs = {
             username = username;
           };
+          home-manager.users.${username} = modules.outputs.home.default;
         }
       ];
     };
