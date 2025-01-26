@@ -40,7 +40,7 @@
     "modules": {
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-GA4WgEp2+zD2GjHfACpmGv1biQ5RhMgYfz9YxRkk9/g=",
+        "narHash": "sha256-/FapygqUkiQkZVI34cHAciK74Kv+XoJCGernh8ltuWE=",
         "path": "./modules",
         "type": "path"
       },

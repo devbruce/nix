@@ -1,23 +1,14 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
-    oh-my-zsh
-    zsh-syntax-highlighting
-    zsh-autosuggestions
-    zsh-history-substring-search
-    zsh-powerlevel10k
-    zoxide
     neofetch
+    eza
     tree
     neovim
     tmux
-    direnv
-    eza
-    fzf
     k9s
     minikube
     jq
     yq
-    bat
     gh
     htop
     httpie
