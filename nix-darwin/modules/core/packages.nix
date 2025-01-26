@@ -1,5 +1,10 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
+    oh-my-zsh
+    zsh-syntax-highlighting
+    zsh-autosuggestions
+    zsh-history-substring-search
+    zsh-powerlevel10k
     zoxide
     neofetch
     tree
