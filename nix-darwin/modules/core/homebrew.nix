@@ -11,13 +11,22 @@
       # pyenv dependencies
       # > Ref: https://github.com/pyenv/pyenv/wiki
       # =======================
-      "openssl"
+      # "openssl"  # Duplicated with rbenv dependencies
       "readline"
       "sqlite3"
       "xz"
       "zlib"
       "tcl-tk@8"
       # =======================
+      # rbenv dependencies
+      # > Ref: https://github.com/pyenv/pyenv/wiki
+      # =======================
+      # "readline"  # Duplicated with pyenv dependencies
+      "openssl@3"
+      "libyaml"
+      "gmp"
+      "autoconf"
+      "ruby-build"  # rbenv plugin(Ref: https://github.com/rbenv/ruby-build)
     ];
     casks = [
       "google-chrome"

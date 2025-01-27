@@ -16,5 +16,6 @@
     poetry
     virtualenv
     pipx
+    rbenv
   ];
 }
