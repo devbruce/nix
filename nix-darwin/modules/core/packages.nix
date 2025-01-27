@@ -12,10 +12,9 @@
     gh
     htop
     httpie
+    rbenv
     pyenv
-    poetry
     virtualenv
     pipx
-    rbenv
   ];
 }
