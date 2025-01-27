@@ -2,6 +2,7 @@
 
 - Nix: <https://nixos.org>
 - nix-darwin: <https://github.com/LnL7/nix-darwin>  
+- Home Manager using Nix: <https://github.com/nix-community/home-manager>
 
 > [!NOTE]  
 > nix-darwin: Nix modules for darwin, `/etc/nixos/configuration.nix` for macOS.
@@ -48,4 +49,25 @@ darwin-rebuild switch --flake ${NixFlakeFileDirPath}#${FlakeOutputName}
 
 ```bash
 nix flake update --flake ${NixFlakeFileDirPath}
+```
+
+<br>
+
+### 📝 Shell Configuration File
+
+The `.zshrc` file generated via [Home Manager using Nix](https://github.com/nix-community/home-manager) is set to read-only.  
+Consequently, if an installation script attempts to modify `.zshrc` directly, the changes should instead be made to `.zshrc_extra`, which is sourced by `.zshrc`.
+
+Below is an example of how to update the installation script to apply configuration changes to `.zshrc_extra` instead of `.zshrc`.
+
+- [nvm](https://github.com/nvm-sh/nvm)
+
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | sed 's/\.zshrc/\.zshrc_extra/g' | bash
+```
+
+- [sdkman](https://sdkman.io/)
+
+```bash
+curl -s "https://get.sdkman.io" | sed 's/\.zshrc/\.zshrc_extra/g' | bash
 ```
