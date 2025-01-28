@@ -9,6 +9,8 @@
     zsh-powerlevel10k
   ];
   home.file.".p10k.zsh".source = ./dotfiles/.p10k.zsh;
+  home.file."toolkits".source = ./toolkits;
+
   programs = {
     zsh = {
       enable = true;
@@ -36,6 +38,9 @@
         l = "eza -al --icons=auto --git-repos-no-status";
         clear-caches = "find . | grep -E \"(__pycache__|\.pyc|\.pyo|\.DS_Store$)\" | xargs rm -rf";
         clear-empty-dirs = "find . -type d -empty -delete";
+        # toolkits
+        ssh-selector = "bash ~/toolkits/ssh_selector.sh";
+        branch-cleaner = "bash ~/toolkits/git_branch_cleaner.sh";
       };
     };
     zoxide = {
