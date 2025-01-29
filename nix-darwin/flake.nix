@@ -15,8 +15,8 @@
   let
     username = "bruce";
   in {
-    darwinConfigurations."mac-v1" = nix-darwin.lib.darwinSystem {
-      specialArgs = { inherit self; };
+    darwinConfigurations."default" = nix-darwin.lib.darwinSystem {
+      specialArgs = { inherit self username; };
       modules = [
         modules.outputs.configs
         modules.outputs.fonts
