@@ -36,11 +36,13 @@
       "podman-desktop"
       "postman"
       "drawio"
+      "1password"
     ];
     masApps = {
       "Magnet" = 441258766;
       "ScreenBrush" = 1233965871;
       "Yoink" = 457622435;
+      "Hidden Bar" = 1452453066;
     };
   };
 }

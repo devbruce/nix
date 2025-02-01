@@ -11,6 +11,7 @@
       "/System/Applications/TextEdit.app"
       "/Applications/draw.io.app"
       "/Applications/Google Chrome.app"
+      "/Applications/1Password.app"
     ];
     dock.persistent-others = [
       "/Users/${username}/Downloads"
