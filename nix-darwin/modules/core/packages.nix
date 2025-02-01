@@ -10,6 +10,7 @@
     jq
     yq
     gh
+    gitui
     htop
     httpie
     rbenv
