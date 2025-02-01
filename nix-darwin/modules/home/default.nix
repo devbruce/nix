@@ -35,7 +35,7 @@
       '';
       shellAliases = {
         vi = "nvim";
-        cat = "bat -p";
+        cat = "bat --theme=Dracula -p";
         l = "eza -al --icons=auto --git-repos-no-status";
         clear-caches = "find . | grep -E \"(__pycache__|\.pyc|\.pyo|\.DS_Store$)\" | xargs rm -rf";
         clear-empty-dirs = "find . -type d -empty -delete";
