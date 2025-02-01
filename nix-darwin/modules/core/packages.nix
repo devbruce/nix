@@ -9,8 +9,9 @@
     minikube
     jq
     yq
-    gh
+    git
     gitui
+    gh
     htop
     httpie
     rbenv
