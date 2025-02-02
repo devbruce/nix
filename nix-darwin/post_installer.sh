@@ -2,6 +2,7 @@
 
 # List of installable items (poetry_plugin_shell을 poetry의 하위 항목처럼 표시)
 OPTIONS=(
+    " 📦 lazyvim ::LazyVim(Neovim setup powered by 💤 lazy.nvim to make it easy to customize and extend your config) < Ref: https://github.com/LazyVim/LazyVim >"
     " 📦 nvm ::NVM(Node Version Manager) < Ref: https://github.com/nvm-sh/nvm >"
     " 📦 sdkman ::SDKMAN!(The Software Development Kit Manager) < Ref: https://sdkman.io/ >"
     " 📦 pyenv_update ::pyenv plugin - pyenv-update  < Ref: https://github.com/pyenv/pyenv-update.git >"
@@ -40,6 +41,25 @@ if [[ " ${SELECTED_OPTIONS[*]} " =~ " poetry_plugin_shell " ]] && [[ ! " ${SELEC
 fi
 
 # Define functions for installing selected items
+install_lazyvim() {
+    local target_dir="$HOME/.config/nvim"
+
+    if [ -d "$target_dir" ]; then
+        read -p "⚠️  LazyVim($target_dir) already exists. Remove and reinstall? (y/N): " response
+        response=${response,,} # to lowercase
+        if [[ "$response" != "y" ]]; then
+            echo "🚫 LazyVim Installation cancelled."
+            return
+        fi
+        rm -rf "$target_dir"
+    fi
+
+    git clone https://github.com/LazyVim/starter "$target_dir"
+    rm -rf "$target_dir/.git"
+
+    echo -e "\n >> ✅ Complete install_lazyvim \n"
+}
+
 install_nvm() {
     echo "# nvm (Ref: https://github.com/nvm-sh/nvm)" >> ~/.zshrc_extra
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | sed 's/\.zshrc/\.zshrc_extra/g' | bash
@@ -89,6 +109,7 @@ echo -e "-------------------------------\n"
 # Execute installation for selected items
 for item in "${SELECTED_OPTIONS[@]}"; do
     case "$item" in
+        "lazyvim") install_lazyvim ;;
         "nvm") install_nvm ;;
         "sdkman") install_sdkman ;;
         "pyenv_update") install_pyenv_update ;;
