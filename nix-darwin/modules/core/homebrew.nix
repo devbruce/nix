@@ -37,12 +37,12 @@
       "postman"
       "drawio"
       "1password"
+      "jordanbaird-ice"  # Ref: https://github.com/jordanbaird/Ice
     ];
     masApps = {
       "Magnet" = 441258766;
       "ScreenBrush" = 1233965871;
       "Yoink" = 457622435;
-      "Hidden Bar" = 1452453066;
     };
   };
 }
