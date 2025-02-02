@@ -11,7 +11,7 @@
     modules.url = "path:./modules";
   };
 
-  outputs = inputs@{ self, nixpkgs, nix-darwin, modules, nix-homebrew, home-manager, ... }:
+  outputs = inputs@{ self, modules, nixpkgs, nix-darwin, nix-homebrew, home-manager, ... }:
   let
     username = "bruce";
   in {
