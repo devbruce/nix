@@ -43,15 +43,10 @@ fi
 # Define functions for installing selected items
 install_lazyvim() {
     local target_dir="$HOME/.config/nvim"
-
     if [ -d "$target_dir" ]; then
-        read -p "⚠️  LazyVim($target_dir) already exists. Remove and reinstall? (y/N): " response
-        response=${response,,} # to lowercase
-        if [[ "$response" != "y" ]]; then
-            echo "🚫 LazyVim Installation cancelled."
-            return
-        fi
-        rm -rf "$target_dir"
+        echo "❗LazyVim($target_dir) already exists."
+        echo -e "🚫 LazyVim Installation cancelled.\n"
+        return
     fi
 
     git clone https://github.com/LazyVim/starter "$target_dir"
@@ -61,18 +56,41 @@ install_lazyvim() {
 }
 
 install_nvm() {
+    local target_dir="$HOME/.nvm"
+    if [ -d "$target_dir" ]; then
+        echo "❗NVM($target_dir) already exists."
+        echo -e "🚫 NVM Installation cancelled.\n"
+        return
+    fi
+
     echo "# nvm (Ref: https://github.com/nvm-sh/nvm)" >> ~/.zshrc_extra
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | sed 's/\.zshrc/\.zshrc_extra/g' | bash
+    echo "" >> ~/.zshrc_extra
     echo -e "\n >> ✅ Complete install_nvm \n"
 }
 
 install_sdkman() {
+    local target_dir="$HOME/.sdkman"
+    if [ -d "$target_dir" ]; then
+        echo "❗SDKMAN($target_dir) already exists."
+        echo -e "🚫 SDKMAN Installation cancelled.\n"
+        return
+    fi
+
     echo "# sdkman (Ref: https://sdkman.io/)" >> ~/.zshrc_extra
     curl -s "https://get.sdkman.io" | sed 's/\.zshrc/\.zshrc_extra/g' | bash
+    echo "" >> ~/.zshrc_extra
     echo -e "\n >> ✅ Complete install_sdkman \n"
 }
 
 install_pyenv_update() {
+    local target_dir="$(pyenv root)/plugins/pyenv-update"
+    if [ -d "$target_dir" ]; then
+        echo "❗pyenv-update($target_dir) already exists."
+        echo -e "🚫 pyenv-update Installation cancelled.\n"
+        return
+    fi
+
     git clone https://github.com/pyenv/pyenv-update.git $(pyenv root)/plugins/pyenv-update
     echo -e "\n >> ✅ Complete install_pyenv_update \n"
 }
