@@ -4,6 +4,7 @@
 OPTIONS=(
     " 📦 lazyvim ::LazyVim(Neovim setup powered by 💤 lazy.nvim to make it easy to customize and extend your config) < Ref: https://github.com/LazyVim/LazyVim >"
     " 📦 nvm ::NVM(Node Version Manager) < Ref: https://github.com/nvm-sh/nvm >"
+    " 📦 gvm ::gvm(Go Version Manager) < Ref: https://github.com/moovweb/gvm >"
     " 📦 sdkman ::SDKMAN!(The Software Development Kit Manager) < Ref: https://sdkman.io/ >"
     " 📦 pyenv_update ::pyenv plugin - pyenv-update  < Ref: https://github.com/pyenv/pyenv-update.git >"
     " 📦 poetry ::Poetry(via pipx) < Ref: https://python-poetry.org/ >"
@@ -69,6 +70,20 @@ install_nvm() {
     echo -e "\n >> ✅ Complete install_nvm \n"
 }
 
+install_gvm() {
+    local target_dir="$HOME/.gvm"
+    if [ -d "$target_dir" ]; then
+        echo "gvm($target_dir) already exists."
+        echo -e "🚫 gvm Installation cancelled.\n"
+        return
+    fi
+
+    echo "# gvm (Ref: https://github.com/moovweb/gvm)" >> ~/.zshrc_extra
+    bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer | sed 's/\.zshrc/\.zshrc_extra/g')
+    echo "" >> ~/.zshrc_extra
+    echo -e "\n >> ✅ Complete install_gvm \n"
+}
+
 install_sdkman() {
     local target_dir="$HOME/.sdkman"
     if [ -d "$target_dir" ]; then
@@ -129,6 +144,7 @@ for item in "${SELECTED_OPTIONS[@]}"; do
     case "$item" in
         "lazyvim") install_lazyvim ;;
         "nvm") install_nvm ;;
+        "gvm") install_gvm ;;
         "sdkman") install_sdkman ;;
         "pyenv_update") install_pyenv_update ;;
         "poetry") install_poetry ;;

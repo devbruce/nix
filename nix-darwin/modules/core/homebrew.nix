@@ -27,6 +27,12 @@
       "gmp"
       "autoconf"
       "ruby-build"  # rbenv plugin(Ref: https://github.com/rbenv/ruby-build)
+      # =======================
+      # gvm dependencies
+      # > Ref: https://github.com/moovweb/gvm
+      # =======================
+      "mercurial"
+      # =======================
     ];
     casks = [
       "google-chrome"
