@@ -10,6 +10,12 @@
   ];
   home.file.".p10k.zsh".source = ./dotfiles/.p10k.zsh;
   home.file.".toolkits".source = ./toolkits;
+  # ====================================================
+  # == oh my tmux(Ref: https://github.com/gpakosz/.tmux)
+  # == Version: https://github.com/gpakosz/.tmux/tree/129d6e7ff3ae6add17f88d6737810bbdaa3a25cf
+  # ====================================================
+  home.file.".tmux.conf".source = ./dotfiles/.tmux/.tmux.conf;
+  home.file.".tmux.conf.local".source = ./dotfiles/.tmux/.tmux.conf.local;
 
   programs = {
     zsh = {
