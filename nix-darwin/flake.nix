@@ -15,7 +15,7 @@
   let
     username = "bruce";
   in {
-    darwinConfigurations."default" = nix-darwin.lib.darwinSystem {
+    darwinConfigurations."all" = nix-darwin.lib.darwinSystem {
       specialArgs = { inherit self username; };
       modules = [
         modules.outputs.configs
@@ -23,6 +23,31 @@
         modules.outputs.packages
         modules.outputs.homebrew
         modules.outputs.system
+        nix-homebrew.darwinModules.nix-homebrew {
+          nix-homebrew = {
+            enable = true;
+            enableRosetta = true;
+            user = username;
+          };
+        }
+        home-manager.darwinModules.home-manager {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "backup";
+          home-manager.extraSpecialArgs = {
+            username = username;
+          };
+          home-manager.users.${username} = modules.outputs.home.default;
+        }
+      ];
+    };
+    darwinConfigurations."no-system-settings" = nix-darwin.lib.darwinSystem {
+      specialArgs = { inherit self username; };
+      modules = [
+        modules.outputs.configs
+        modules.outputs.fonts
+        modules.outputs.packages
+        modules.outputs.homebrew
         nix-homebrew.darwinModules.nix-homebrew {
           nix-homebrew = {
             enable = true;

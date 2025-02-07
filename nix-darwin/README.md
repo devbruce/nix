@@ -32,13 +32,13 @@ nix flake init -t nix-darwin --extra-experimental-features "nix-command flakes"
 - Install `darwin-rebuild` & apply Nix Flake configuration
 
 ```bash
-nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake .#default
+nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake .#all
 ```
 
 - Apply the Nix Flake configuration
 
 ```bash
-darwin-rebuild switch --flake .#default
+darwin-rebuild switch --flake .#all
 ```
 
 - Update `flake.lock`
