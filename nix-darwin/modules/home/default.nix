@@ -8,14 +8,23 @@
     zsh-history-substring-search
     zsh-powerlevel10k
   ];
-  home.file.".p10k.zsh".source = ./dotfiles/.p10k.zsh;
   home.file.".toolkits".source = ./toolkits;
+  home.file.".p10k.zsh".source = ./dotfiles/.p10k.zsh;
   # ====================================================
-  # == oh my tmux(Ref: https://github.com/gpakosz/.tmux)
-  # == Version: https://github.com/gpakosz/.tmux/tree/129d6e7ff3ae6add17f88d6737810bbdaa3a25cf
+  # == Tmux(Ref: https://github.com/tmux/tmux)
   # ====================================================
+  home.file.".tmux/plugins/tpm" = {
+    source = pkgs.fetchFromGitHub {
+      owner = "tmux-plugins";
+      repo = "tpm";
+      rev = "master";
+      sha256 = "sha256-hW8mfwB8F9ZkTQ72WQp/1fy8KL1IIYMZBtZYIwZdMQc=";
+    };
+  };
   home.file.".tmux.conf".source = ./dotfiles/.tmux/.tmux.conf;
-  home.file.".tmux.conf.local".source = ./dotfiles/.tmux/.tmux.conf.local;
+  home.file.".tmux/.extra.conf".source = ./dotfiles/.tmux/.extra.conf;
+  home.file.".tmux/.extra.plugins.conf".source = ./dotfiles/.tmux/.extra.plugins.conf;
+  home.file.".tmux/.extra.catppuccin.conf".source = ./dotfiles/.tmux/.extra.catppuccin.conf;
 
   programs = {
     zsh = {
