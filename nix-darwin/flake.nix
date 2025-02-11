@@ -5,66 +5,53 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin.url = "github:LnL7/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
     modules.url = "github:devbruce/nix-modules/main?dir=nix-darwin";
   };
 
-  outputs = inputs@{ self, modules, nixpkgs, nix-darwin, nix-homebrew, home-manager, ... }:
+  outputs = inputs@{ self, nixpkgs, nix-darwin, nix-homebrew, home-manager, modules, ... }:
   let
+    # ==============================
+    # == Variables
+    # ==============================
     username = "bruce";
+    # ==============================
+    commonModules = [
+      modules.outputs.configs
+      modules.outputs.fonts
+      modules.outputs.packages
+    ];
+    nixHomebrew = [
+      modules.outputs.homebrew
+      nix-homebrew.darwinModules.nix-homebrew {
+        nix-homebrew = {
+          enable = true;
+          enableRosetta = true;
+          user = username;
+        };
+      }
+    ];
+    homeManager = [
+      home-manager.darwinModules.home-manager {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.backupFileExtension = "backup";
+        home-manager.extraSpecialArgs = {
+          username = username;
+        };
+        home-manager.users.${username} = modules.outputs.home.default;
+      }
+    ];
   in {
     darwinConfigurations."all" = nix-darwin.lib.darwinSystem {
       specialArgs = { inherit self username; };
-      modules = [
-        modules.outputs.configs
-        modules.outputs.fonts
-        modules.outputs.packages
-        modules.outputs.homebrew
-        modules.outputs.system
-        nix-homebrew.darwinModules.nix-homebrew {
-          nix-homebrew = {
-            enable = true;
-            enableRosetta = true;
-            user = username;
-          };
-        }
-        home-manager.darwinModules.home-manager {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.backupFileExtension = "backup";
-          home-manager.extraSpecialArgs = {
-            username = username;
-          };
-          home-manager.users.${username} = modules.outputs.home.default;
-        }
-      ];
+      modules = commonModules ++ nixHomebrew ++ homeManager ++ [ modules.outputs.system ];
     };
     darwinConfigurations."no-system-settings" = nix-darwin.lib.darwinSystem {
       specialArgs = { inherit self username; };
-      modules = [
-        modules.outputs.configs
-        modules.outputs.fonts
-        modules.outputs.packages
-        modules.outputs.homebrew
-        nix-homebrew.darwinModules.nix-homebrew {
-          nix-homebrew = {
-            enable = true;
-            enableRosetta = true;
-            user = username;
-          };
-        }
-        home-manager.darwinModules.home-manager {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.backupFileExtension = "backup";
-          home-manager.extraSpecialArgs = {
-            username = username;
-          };
-          home-manager.users.${username} = modules.outputs.home.default;
-        }
-      ];
+      modules = commonModules ++ nixHomebrew ++ homeManager;
     };
   };
 }
