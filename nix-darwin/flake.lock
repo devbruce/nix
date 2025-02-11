@@ -40,11 +40,11 @@
     "modules": {
       "locked": {
         "dir": "nix-darwin/modules",
-        "lastModified": 1739272643,
-        "narHash": "sha256-7l3H8VOdWA6lrllqG1ccucvwzd5S+VTOuEktZQ1Vh3k=",
+        "lastModified": 1739273939,
+        "narHash": "sha256-1fBVXp/AbHjId7NYFMVh3RkyYEbSesfrlPTDfKT14Xc=",
         "owner": "devbruce",
         "repo": "nix",
-        "rev": "1c4c82d0a61208e18b524439bd466e476ec0aca2",
+        "rev": "7d14771de8f087a9af63f260e95d5521416f4f28",
         "type": "github"
       },
       "original": {

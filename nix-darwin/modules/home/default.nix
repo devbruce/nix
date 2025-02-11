@@ -57,6 +57,7 @@
         # toolkits
         ssh-selector = "bash ~/.toolkits/ssh_selector.sh";
         branch-cleaner = "bash ~/.toolkits/branch_cleaner.sh";
+        tms = "bash ~/.toolkits/tmux_session_manager.sh";
       };
     };
     zoxide = {
