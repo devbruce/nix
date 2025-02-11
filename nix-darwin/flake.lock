@@ -39,19 +39,19 @@
     },
     "modules": {
       "locked": {
-        "dir": "nix-darwin/modules",
-        "lastModified": 1739273939,
-        "narHash": "sha256-1fBVXp/AbHjId7NYFMVh3RkyYEbSesfrlPTDfKT14Xc=",
+        "dir": "nix-darwin",
+        "lastModified": 1739275392,
+        "narHash": "sha256-sYjUjy4fjgpXRa8BJEH+WXj5Vh7n8qYN5A9QIl0Qa3g=",
         "owner": "devbruce",
-        "repo": "nix",
-        "rev": "7d14771de8f087a9af63f260e95d5521416f4f28",
+        "repo": "nix-modules",
+        "rev": "f849085c4abfbd2694f48f3d6f4d9352d3379655",
         "type": "github"
       },
       "original": {
-        "dir": "nix-darwin/modules",
+        "dir": "nix-darwin",
         "owner": "devbruce",
         "ref": "main",
-        "repo": "nix",
+        "repo": "nix-modules",
         "type": "github"
       }
     },

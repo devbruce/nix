@@ -2,7 +2,7 @@
 
 - Nix: <https://nixos.org>
 - nix-darwin: <https://github.com/LnL7/nix-darwin>  
-- Home Manager using Nix: <https://github.com/nix-community/home-manager>
+- ✨ Remote modules: [`devbruce/nix-modules`](https://github.com/devbruce/nix-modules)
 
 > [!NOTE]  
 > nix-darwin: Nix modules for darwin, `/etc/nixos/configuration.nix` for macOS.
@@ -11,7 +11,7 @@
 
 ## 📦 Contents
 
-- 📁 [`./nix-darwin`](./nix-darwin) for macOS
+- 📁 [`./nix-darwin`](./nix-darwin) for macOS  
 
 <br>
 
@@ -48,4 +48,4 @@ darwin-rebuild switch --flake ${NixFlakeFileDirPath}#${FlakeOutputName}
 nix flake update --flake ${NixFlakeFileDirPath}
 ```
 
-</details><br>
+</details>
