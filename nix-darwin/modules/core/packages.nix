@@ -1,6 +1,9 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
     neofetch
+    fastfetch
+    cowsay
+    lolcat
     eza
     tree
     neovim
