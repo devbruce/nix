@@ -8,7 +8,8 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
-    modules.url = "path:./modules";
+    modules.url = "github:devbruce/nix/main?dir=nix-darwin/modules";
+    
   };
 
   outputs = inputs@{ self, modules, nixpkgs, nix-darwin, nix-homebrew, home-manager, ... }:
