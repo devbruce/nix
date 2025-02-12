@@ -1,11 +1,7 @@
 # nix
 
 - Nix: <https://nixos.org>
-- nix-darwin: <https://github.com/LnL7/nix-darwin>  
-- ✨ Remote modules: [`devbruce/nix-modules`](https://github.com/devbruce/nix-modules)
-
-> [!NOTE]  
-> nix-darwin: Nix modules for darwin, `/etc/nixos/configuration.nix` for macOS.
+- ✨ **Remote modules: [`devbruce/nix-modules`](https://github.com/devbruce/nix-modules)**
 
 <br>
 
