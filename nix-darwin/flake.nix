@@ -9,9 +9,10 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     modules.url = "github:devbruce/nix-modules/main?dir=nix-darwin";
+    home-modules.url = "github:devbruce/nix-modules/main?dir=home";
   };
 
-  outputs = inputs@{ self, nixpkgs, nix-darwin, nix-homebrew, home-manager, modules, ... }:
+  outputs = inputs@{ self, nixpkgs, nix-darwin, nix-homebrew, home-manager, modules, home-modules, ... }:
   let
     # ==============================
     # == Variables
@@ -41,7 +42,7 @@
         home-manager.extraSpecialArgs = {
           username = username;
         };
-        home-manager.users.${username} = modules.outputs.home.default;
+        home-manager.users.${username} = home-modules.outputs.default;
       }
     ];
   in {
