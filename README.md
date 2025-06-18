@@ -35,7 +35,7 @@ nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch 
 - Apply the Nix Flake configuration
 
 ```bash
-darwin-rebuild switch --flake ${NixFlakeFileDirPath}#${FlakeOutputName}
+sudo darwin-rebuild switch --flake ${NixFlakeFileDirPath}#${FlakeOutputName}
 ```
 
 - Update `flake.lock`
